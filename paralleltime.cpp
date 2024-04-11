@@ -2,7 +2,7 @@
 #include <vector>
 #include <pthread.h> 
 #include <ctime> 
-#include <cstdlib> // Include header for random number generation
+#include <cstdlib> // Header for random number generation
 
 using namespace std;
 
@@ -56,7 +56,6 @@ void* quickSortHelper(void* arg) {
     }
 
     pthread_exit(NULL); // Exit the thread
-    return NULL;
 }
 
 // Function to print the array
@@ -68,10 +67,8 @@ void printArray(const vector<double>& arr) {
 }
 
 int main() {
-    int n;
-    cout << "Enter the number of elements: ";
-    cin >> n;
-
+    const int n = 1000; // Number of elements 
+    
     // Generate random elements for the array
     vector<double> arr(n);
     srand(time(0)); // Seed the random number generator with current time
@@ -94,12 +91,12 @@ int main() {
     // End timing
     clock_t end = clock();
 
-    // Calculate time taken
-    double time_taken = double(end - start) / CLOCKS_PER_SEC;
+    // Calculate time taken in milliseconds
+    double time_taken_ms = double(end - start) / (CLOCKS_PER_SEC / 1000);
 
     cout << "Sorted array is: \n";
     printArray(arr); // Print the sorted array
-    cout << "Time taken: " << time_taken << " seconds" << endl;
+    cout << "Time taken: " << time_taken_ms << " milliseconds" << endl;
 
     return 0;
 }
