@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <ctime> // Include header for timing
-#include <cstdlib> // Include header for random number generation
+#include <ctime> // Header for timing
+#include <cstdlib> // Header for random number generation
 
 using namespace std;
 
@@ -37,10 +37,7 @@ void printArray(const vector<double>& arr) {
 }
 
 int main() {
-    int n;
-    cout << "Enter the number of elements: ";
-    cin >> n;
-
+    const int n = 5000; // Number of elements
     // Generate random elements for the array
     vector<double> arr(n);
     srand(time(0)); // Seed the random number generator with current time
@@ -60,13 +57,14 @@ int main() {
     // End timing
     clock_t end = clock();
 
-    // Calculate time taken
-    double time_taken = double(end - start) / CLOCKS_PER_SEC;
+    // Calculate time taken in milliseconds
+    double time_taken_ms = (double(end - start) * 1000) / CLOCKS_PER_SEC;
 
     cout << "Sorted array is: \n";
     printArray(arr);
 
-    cout << "Time taken: " << time_taken << " seconds" << endl;
+    cout << "Time taken: " << time_taken_ms << " ms" << endl;
 
     return 0;
 }
+
