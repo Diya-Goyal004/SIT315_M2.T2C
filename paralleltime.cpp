@@ -56,6 +56,7 @@ void* quickSortHelper(void* arg) {
     }
 
     pthread_exit(NULL); // Exit the thread
+    return NULL;
 }
 
 // Function to print the array
